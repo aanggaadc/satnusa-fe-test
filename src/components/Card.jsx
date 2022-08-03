@@ -34,7 +34,7 @@ export default function Card({ name, email, address, phone, website, company }) 
 
                 <div className='website'>
                     <AiOutlineGlobal size={20} />
-                    <h1>{website}</h1>
+                    <a href={`https://www.${website}`}><h1>{website}</h1></a>
                 </div>
 
                 <div className='company'>

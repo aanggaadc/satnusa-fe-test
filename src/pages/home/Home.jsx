@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import NoData from '../../no-data.gif'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Card from '../../components/Card'
@@ -50,7 +51,7 @@ export default function Home() {
                         website={item.website}
                         company={item.company.name}
                     />
-                }) : <h1>No Data</h1>}
+                }) : <img src={NoData} alt="no-data" />}
             </div>
 
             <Footer />
