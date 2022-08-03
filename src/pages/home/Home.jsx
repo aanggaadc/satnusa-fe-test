@@ -16,7 +16,9 @@ export default function Home() {
     })
     let dataFilter = data
 
-    if (filter.name) {
+    if (filter.name && filter.email) {
+        dataFilter = data.filter(item => item.name.toLowerCase() === filter.name.toLocaleLowerCase() && item.email.toLowerCase() === filter.email.toLowerCase())
+    } else if (filter.name) {
         dataFilter = data.filter(item => item.name.toLowerCase() === filter.name.toLocaleLowerCase())
     } else if (filter.email) {
         dataFilter = data.filter(item => item.email.toLowerCase() === filter.email.toLowerCase())
@@ -40,7 +42,7 @@ export default function Home() {
     }, [])
     return (
         <>
-            <Navbar setFilter={setFilter} />
+            <Navbar setFilter={setFilter} setIsLoading={setIsLoading} />
 
             <div className='home-container'>
                 {isLoading ? <Loader /> : dataFilter.length > 0 ? dataFilter.map((item, index) => {

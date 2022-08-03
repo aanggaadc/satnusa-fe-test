@@ -5,8 +5,9 @@ import { BsList } from "react-icons/bs";
 import { VscChromeClose } from "react-icons/vsc";
 import { BiSearch } from "react-icons/bi";
 
-export default function Navbar({ setFilter }) {
+export default function Navbar({ setFilter, setIsLoading }) {
     const [mobileNav, setMobileNav] = useState(false)
+    const form = document.getElementById('form')
     const [state, setState] = useState({
         name: "",
         email: ""
@@ -19,8 +20,12 @@ export default function Navbar({ setFilter }) {
     }
 
     const submitHandler = (e) => {
+        setIsLoading(true)
         e.preventDefault()
         setFilter(state)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000)
     }
 
     const clearHandler = () => {
@@ -29,19 +34,20 @@ export default function Navbar({ setFilter }) {
             email: ""
         })
         setFilter(state)
+        form.reset()
     }
 
 
     return (
         <nav id="navbar">
             <img src={Logo} alt="Logo" style={{ width: "65px" }} />
-            <form onSubmit={submitHandler}>
+            <form id='form' onSubmit={submitHandler}>
                 <ul className={mobileNav ? "item expanded" : "item"}>
                     <li>
                         <div className='search-bar'>
                             <div className='search-logo'>
                                 <BiSearch size={20} color="#B3BAC5" />
-                                <input type="text" value={state.name || ""} name='name' placeholder="Search By Name"
+                                <input type="text" name='name' placeholder="Search By Name"
                                     onChange={changeHandler} />
                             </div>
                         </div>
@@ -50,7 +56,7 @@ export default function Navbar({ setFilter }) {
                         <div className='search-bar'>
                             <div className='search-logo'>
                                 <BiSearch size={20} color="#B3BAC5" />
-                                <input type="text" value={state.email || ""} name='email' placeholder="Search By Email"
+                                <input type="text" name='email' placeholder="Search By Email"
                                     onChange={changeHandler} />
                             </div>
                         </div>
