@@ -5,7 +5,7 @@ import { BsList } from "react-icons/bs";
 import { VscChromeClose } from "react-icons/vsc";
 import { BiSearch } from "react-icons/bi";
 
-export default function Navbar() {
+export default function Navbar({ filter, setFilter }) {
     const [mobileNav, setMobileNav] = useState(false)
 
     return (
@@ -16,7 +16,10 @@ export default function Navbar() {
                     <div className='search-bar'>
                         <div className='search-logo'>
                             <BiSearch size={20} color="#B3BAC5" />
-                            <input type="text" placeholder="Search By Name" />
+                            <input type="text" placeholder="Search By Name"
+                                onChange={(e) => {
+                                    setFilter({ ...filter, name: e.target.value })
+                                }} />
                         </div>
                     </div>
                 </li>
@@ -24,11 +27,14 @@ export default function Navbar() {
                     <div className='search-bar'>
                         <div className='search-logo'>
                             <BiSearch size={20} color="#B3BAC5" />
-                            <input type="text" placeholder="Search By Email" />
+                            <input type="text" placeholder="Search By Email"
+                                onChange={((e) => {
+                                    setFilter({ ...filter, email: e.target.value })
+                                })} />
                         </div>
                     </div>
                 </li>
-                <button className="button-search">Search</button>
+                {/* <button className="button-search">Search</button> */}
 
             </ul >
             <div className="menu-icon">
