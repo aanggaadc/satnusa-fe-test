@@ -37,9 +37,8 @@ export default function Navbar({ setFilter, setIsLoading }) {
         form.reset()
     }
 
-
     return (
-        <nav id="navbar">
+        <nav id="navbar" className={mobileNav ? "expanded" : ''}>
             <img src={Logo} alt="Logo" style={{ width: "65px" }} />
             <form id='form' onSubmit={submitHandler}>
                 <ul className={mobileNav ? "item expanded" : "item"}>
