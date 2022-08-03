@@ -39,7 +39,7 @@ export default function Home() {
     }, [])
     return (
         <>
-            <Navbar filter={filter} setFilter={setFilter} />
+            <Navbar setFilter={setFilter} />
 
             <div className='home-container'>
                 {isLoading ? <Loader /> : dataFilter.length > 0 ? dataFilter.map((item, index) => {
