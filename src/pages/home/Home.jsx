@@ -34,6 +34,10 @@ export default function Home() {
                 }, 1000)
             }).catch((error) => {
                 console.log(error)
+                setTimeout(() => {
+                    setIsLoading(false)
+                }, 1000)
+                alert(error.message)
             })
     }
 
