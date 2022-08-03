@@ -5,6 +5,9 @@ import { AiOutlineGlobal } from "react-icons/ai";
 import './Card.css'
 
 export default function Card({ name, email, address, phone, website, company }) {
+    const splitNumber = phone.split(' ')
+    const phoneNumber = splitNumber[0].replace(/[&\\#,+()$~%.'":*?<>{}-]/g, '')
+
     return (
         <div className='card-container'>
             <div className='top'>
@@ -16,7 +19,7 @@ export default function Card({ name, email, address, phone, website, company }) 
             <div className='bottom'>
                 <div className='email'>
                     <MdEmail size={20} />
-                    <h1>{email}</h1>
+                    <a href={`mailto:${email}`}><h1>{email}</h1></a>
                 </div>
 
                 <div className='address'>
@@ -26,7 +29,7 @@ export default function Card({ name, email, address, phone, website, company }) 
 
                 <div className='phone'>
                     <FaPhoneAlt size={20} />
-                    <h1>{phone}</h1>
+                    <a href={`tel:${phoneNumber}`}><h1>{phone}</h1></a>
                 </div>
 
                 <div className='website'>
